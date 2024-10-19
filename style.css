@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    padding: 0;
+} 
+
+.heading{
+       
+      background-color: yellow;
+      display: flex;
+    
+}
+
+.heading_1{
+    background-color: red;
+    display: grid;
+    place-items: center;
+}

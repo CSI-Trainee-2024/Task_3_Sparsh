@@ -1,5 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:minesweeper/homepage.dart';
 import 'package:minesweeper/menu.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,9 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _goToMenuPage() {
-    Future.delayed(Duration(seconds: 2)).then((_) {
+    Future.delayed(const Duration(seconds: 2)).then((_) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MenuPage()));
+          context, MaterialPageRoute(builder: (context) => const MenuPage()));
     });
   }
 

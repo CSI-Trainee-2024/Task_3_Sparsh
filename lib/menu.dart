@@ -92,9 +92,8 @@ class _MenuPageState extends State<MenuPage> {
               ),
               GestureDetector(
                 onTap: () {
-                  print(numberofGrid);
                   Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => Homepage(numberofGrid,level)),
+                      MaterialPageRoute(builder: (context) => Homepage(numberofGrid: numberofGrid, level: level)),
                       (Route<dynamic> route) => false);
                 },
                 child: Container(

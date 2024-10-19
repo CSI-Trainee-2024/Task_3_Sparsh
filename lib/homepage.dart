@@ -6,10 +6,7 @@ import 'package:minesweeper/bomb.dart';
 import 'dart:math';
 
 class Homepage extends StatefulWidget {
-  Homepage(int numofGrid, String lev) {
-    numberofGrid = numofGrid;
-    level = lev;
-  }
+  Homepage({required this.numberofGrid, required this.level});
 
   int numberofGrid = 5;
   String level = "Easy";
@@ -196,7 +193,7 @@ class _HomepageState extends State<Homepage> {
                     children: [
                       Text(bomb_location.length.toString() ,style: TextStyle(fontSize: 40),
                       ),
-                      Text(" TOTAL BOMB")
+                      Text(" TOTAL BOMBS")
                     ],
                   ),
                   GestureDetector(
