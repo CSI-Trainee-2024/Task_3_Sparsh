@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:minesweeper/numberbox.dart';
+import 'package:minesweeper/bomb.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -10,6 +12,24 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+
+  int number_of_square=9*9;
+  int number_ineach_row=9;
+  var square_status=[];
+
+  final List<int> bomb_location=[
+    4,40,65
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    for(int i=0;i<number_of_square;i++){
+      square_status.add([0,false]);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,20 +75,23 @@ class _HomepageState extends State<Homepage> {
             ),
             Expanded(
               child: GridView.builder(
-                  itemCount: 25,
+                  itemCount: number_of_square,
                   physics: NeverScrollableScrollPhysics(),
-                  // shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 5),
+                      crossAxisCount: number_ineach_row),
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.all(2),
-                      alignment: Alignment.center,
-                      width: 25,
-                      height: 25,
-                      color: Colors.blue,
-                      child: Text(index.toString()),
-                    );
+                    if (bomb_location.contains(index)){
+                      return Bomb(
+                        child:index,
+                        revealed: square_status[index][1],
+                      );
+                      
+                    }
+                      return Numberbox(
+                        child: index,
+                        revealed: square_status[index][1],
+                      );
+
                   }),
             ),
           ],
@@ -77,22 +100,3 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
-// Container(
-//   height: 150,
-//   color: Colors.red,
-//   child: Container(
-//     color: Colors.green,
-//     child: const Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//       children: [
-//         Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Text('6', style: TextStyle(fontSize: 40)),
-//             Text('BOMB')
-//           ],
-//         )
-//       ],
-//     ),
-//   ),
-// )
