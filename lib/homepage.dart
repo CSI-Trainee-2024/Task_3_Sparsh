@@ -28,7 +28,35 @@ class _HomepageState extends State<Homepage> {
     for(int i=0;i<number_of_square;i++){
       square_status.add([0,false]);
     }
+    scanbombs();
   }
+
+  void refresh() {
+    for(int i=0;i<number_of_square;i++){
+      setState(() {
+        square_status[i][1]=false;
+      });    
+    }
+
+  }
+
+  void scanbombs(){
+    for(int i=0;i<number_of_square;i++){
+      int number_of_bomb_around= 0;
+
+      if (bomb_location.contains(i-1) && i%number_ineach_row !=0){
+        number_of_bomb_around++;
+      
+    }
+      if (bomb_location.contains(i-1-number_ineach_row)&& i%number_ineach_row !=0 && i>=number_ineach_row) {
+        number_of_bomb_around++;
+
+      }
+    }
+
+    
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +81,16 @@ class _HomepageState extends State<Homepage> {
                       Text("BOMB")
                     ],
                   ),
-                  Card(
-                      color: Colors.green,
-                      child: Icon(
-                        Icons.refresh,
-                        color: Colors.white,
-                        size: 40,
-                      )),
+                  GestureDetector(
+                    onTap: refresh,
+                    child: Card(
+                        color: Colors.green,
+                        child: Icon(
+                          Icons.refresh,
+                          color: Colors.white,
+                          size: 40,
+                        )),
+                  ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -84,12 +115,24 @@ class _HomepageState extends State<Homepage> {
                       return Bomb(
                         child:index,
                         revealed: square_status[index][1],
+                        function: (){
+                         setState(() {
+                           square_status[index][1] = true;
+                         });
+                      
+                        },
                       );
                       
                     }
-                      return Numberbox(
+                        return Numberbox(
                         child: index,
                         revealed: square_status[index][1],
+                        function: () {
+                          setState(() {
+                            square_status[index][1] = true;
+                          });
+
+                        },
                       );
 
                   }),

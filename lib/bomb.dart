@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class Bomb extends StatelessWidget {
   final child;
-  bool revealed;
-  final Function;
+  final bool revealed;
+  final function;
 
-  Bomb({this.child, required this.revealed ,this.Function} );  
+  Bomb({this.child, required this.revealed ,this.function} );  
 
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: Function,
+      onTap: function,
       child: Padding(
               padding: const EdgeInsets.all(1.0),
               child: Container(
