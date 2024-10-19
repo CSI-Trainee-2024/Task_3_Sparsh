@@ -18,7 +18,7 @@ class _HomepageState extends State<Homepage> {
   var square_status=[];
 
   final List<int> bomb_location=[
-    4,40,65
+    4,40,65,5
   ];
 
   @override
@@ -28,7 +28,7 @@ class _HomepageState extends State<Homepage> {
     for(int i=0;i<number_of_square;i++){
       square_status.add([0,false]);
     }
-    // scanbombs();
+    scanbombs();
   }
 
   void refresh() {
@@ -38,6 +38,54 @@ class _HomepageState extends State<Homepage> {
       });    
     }
 
+  }
+
+  void scanbombs(){
+    for(int i=0;i<number_of_square;i++){
+      int number_of_bomb_around= 0;
+
+      if (bomb_location.contains(i-1) && i%number_ineach_row !=0){
+        number_of_bomb_around++;
+      
+    }
+      if (bomb_location.contains(i-1-number_ineach_row)&& i%number_ineach_row !=0 && i>=number_ineach_row) {
+        number_of_bomb_around++;
+
+      }
+      if(bomb_location.contains(i-number_ineach_row)&& i>=number_ineach_row){
+        number_of_bomb_around++;
+
+      }
+
+      if(bomb_location.contains(i+1-number_ineach_row)&& i>=number_ineach_row && (i%number_ineach_row) !=(number_ineach_row-1)){
+        number_of_bomb_around++;
+
+      }
+      if(bomb_location.contains(i+1)&& (i%number_ineach_row) !=(number_ineach_row-1) ){
+        number_of_bomb_around++;
+        
+      }
+      
+      if(bomb_location.contains(i+1+number_ineach_row)&& (i%number_ineach_row) != (number_ineach_row-1) && i<(number_of_square-number_ineach_row)){
+         number_of_bomb_around++;
+      }
+
+      if(bomb_location.contains(i+number_ineach_row)&& i<(number_of_square-number_ineach_row)){
+        number_of_bomb_around++;
+      }
+
+      if(bomb_location.contains(i-1+number_ineach_row)&& i<(number_of_square-number_ineach_row) && (i%number_ineach_row) != 0){
+         number_of_bomb_around++;
+      }
+
+      setState(() {
+        square_status[i][0]=number_of_bomb_around;
+      });
+
+
+    }
+
+    
   }
 
   
@@ -100,7 +148,6 @@ class _HomepageState extends State<Homepage> {
                   itemBuilder: (context, index) {
                     if (bomb_location.contains(index)){
                       return Bomb(
-                        child:index,
                         revealed: square_status[index][1],
                         function: (){
                          setState(() {
@@ -112,7 +159,7 @@ class _HomepageState extends State<Homepage> {
                       
                     }
                         return Numberbox(
-                        child: index,
+                        child: square_status[index][0],
                         revealed: square_status[index][1],
                         function: () {
                           setState(() {
