@@ -18,7 +18,7 @@ class _HomepageState extends State<Homepage> {
   var square_status=[];
 
   final List<int> bomb_location=[
-    4,40,65,5
+    4,40,65,5,6,10
   ];
 
   @override
