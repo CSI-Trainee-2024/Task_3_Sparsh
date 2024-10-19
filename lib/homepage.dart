@@ -28,7 +28,7 @@ class _HomepageState extends State<Homepage> {
     for(int i=0;i<number_of_square;i++){
       square_status.add([0,false]);
     }
-    scanbombs();
+    // scanbombs();
   }
 
   void refresh() {
@@ -40,23 +40,7 @@ class _HomepageState extends State<Homepage> {
 
   }
 
-  void scanbombs(){
-    for(int i=0;i<number_of_square;i++){
-      int number_of_bomb_around= 0;
-
-      if (bomb_location.contains(i-1) && i%number_ineach_row !=0){
-        number_of_bomb_around++;
-      
-    }
-      if (bomb_location.contains(i-1-number_ineach_row)&& i%number_ineach_row !=0 && i>=number_ineach_row) {
-        number_of_bomb_around++;
-
-      }
-    }
-
-    
-  }
-
+  
 
   @override
   Widget build(BuildContext context) {
