@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:minesweeper/menu.dart';
 import 'package:minesweeper/splash.dart';
 
 void main() {

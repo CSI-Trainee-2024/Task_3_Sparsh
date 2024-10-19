@@ -34,7 +34,6 @@ class _HomepageState extends State<Homepage> {
     generateBombLocations();
     generateSquareStatus();
     scanbombs();
-  
   }
 
   void generateBombLocations() {
@@ -65,22 +64,17 @@ class _HomepageState extends State<Homepage> {
   }
 
   void reveal_box_numbers(int index) {
-
     //if box number is more than 0
     if (square_status[index][0] != 0) {
       setState(() {
         square_status[index][1] = true;
       });
-    } 
-    
-    
-    
+    }
+
     // if box number is 0
     else if (square_status[index][0] == 0) {
       setState(() {
-
         square_status[index][1] = true;
-
 
         // for left boxes
         if (index % number_ineach_row != 0) {
@@ -91,18 +85,14 @@ class _HomepageState extends State<Homepage> {
           square_status[index - 1][1] = true;
         }
 
-
-
-       //for right box
-       if (index+1 % number_ineach_row != 0) {
+        //for right box
+        if ((index + 1) % number_ineach_row != 0) {
           if (square_status[index + 1][0] == 0 &&
               square_status[index + 1][1] == false) {
             reveal_box_numbers(index + 1);
           }
           square_status[index + 1][1] = true;
         }
-
-
 
         //for upper box
         if (index >= number_ineach_row) {
@@ -113,9 +103,9 @@ class _HomepageState extends State<Homepage> {
           square_status[index - number_ineach_row][1] = true;
         }
 
-
         //for lower box
-        if (index < (number_ineach_row * number_ineach_row) - number_ineach_row) {
+        if (index <
+            (number_ineach_row * number_ineach_row) - number_ineach_row) {
           if (square_status[index + number_ineach_row][0] == 0 &&
               square_status[index + number_ineach_row][1] == false) {
             reveal_box_numbers(index + number_ineach_row);
@@ -132,6 +122,9 @@ class _HomepageState extends State<Homepage> {
         square_status[i][1] = false;
       });
     }
+    setState(() {
+      bombs_revealed = false;
+    });
   }
 
   void scanbombs() {
@@ -190,6 +183,7 @@ class _HomepageState extends State<Homepage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Column(
+          // mainAxisAlignment: MainAxisAlignment,
           children: [
             Container(
               height: 150,
@@ -200,11 +194,9 @@ class _HomepageState extends State<Homepage> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "6",
-                        style: TextStyle(fontSize: 40),
+                      Text(bomb_location.length.toString() ,style: TextStyle(fontSize: 40),
                       ),
-                      Text("BOMB")
+                      Text(" TOTAL BOMB")
                     ],
                   ),
                   GestureDetector(
@@ -217,16 +209,7 @@ class _HomepageState extends State<Homepage> {
                           size: 40,
                         )),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "0",
-                        style: TextStyle(fontSize: 40),
-                      ),
-                      Text("TIME")
-                    ],
-                  ),
+                  
                 ],
               ),
             ),
@@ -249,10 +232,9 @@ class _HomepageState extends State<Homepage> {
                       );
                     }
                     return Numberbox(
-                      child: square_status[index][0],
-                      revealed: square_status[index][1],
-                      function: () => reveal_box_numbers(index)
-                    );
+                        child: square_status[index][0] == 0 ? " " : square_status[index][0] ,
+                        revealed: square_status[index][1],
+                        function: () => reveal_box_numbers(index));
                   }),
             ),
           ],

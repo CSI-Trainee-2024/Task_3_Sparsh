@@ -13,7 +13,7 @@ class Numberbox extends StatelessWidget {
       child: Padding(
               padding: const EdgeInsets.all(1.0),
               child: Container(
-                color: revealed?  Colors.blue : Colors.yellow,
+                color: revealed?  Colors.grey[100] : Colors.grey[400],
                 child: Center(
                   child: Text(
                     revealed ? child.toString() :'',
