@@ -4,7 +4,7 @@ class Bomb extends StatelessWidget {
   final bool revealed;
   final function;
 
-  Bomb({ required this.revealed ,this.function} );  
+  const Bomb({super.key,  required this.revealed ,this.function} );  
 
 
   @override

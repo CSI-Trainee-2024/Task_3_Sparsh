@@ -32,6 +32,52 @@ class _HomepageState extends State<Homepage> {
     scanbombs();
   }
 
+  void reveal_box_numbers(int index){
+
+    if (square_status[index][0]!= 0){
+      setState(() {
+      square_status[index][1] = true;
+    });
+  }
+
+    else if( square_status[index][0]==0){
+      setState(() {
+        square_status[index][1] = true;
+
+        if (index % number_ineach_row!= 0){
+          if (square_status[index-1][0] == 0 && square_status[index-1][1] ==false){
+            reveal_box_numbers(index-1);
+          }
+          square_status[index-1][1]=true;
+        }
+
+        if (index % number_ineach_row!= 0){
+          if (square_status[index-1][0] == 0 && square_status[index-1][1] ==false){
+            reveal_box_numbers(index-1);
+          }
+          square_status[index-1][1]=true;
+        }
+
+
+        if (index % number_ineach_row!= 0){
+          if (square_status[index-1][0] == 0 && square_status[index-1][1] ==false){
+            reveal_box_numbers(index-1);
+          }
+          square_status[index-1][1]=true;
+        }
+
+
+
+        
+      });
+
+    }
+  }
+
+      
+    
+    
+
   void refresh() {
     for(int i=0;i<number_of_square;i++){
       setState(() {
@@ -43,56 +89,51 @@ class _HomepageState extends State<Homepage> {
 
   void scanbombs(){
     for(int i=0;i<number_of_square;i++){
-      int number_of_bomb_around= 0;
+      int numberOfBombAround= 0;
 
       if (bomb_location.contains(i-1) && i%number_ineach_row !=0){
-        number_of_bomb_around++;
+        numberOfBombAround++;
       
     }
       if (bomb_location.contains(i-1-number_ineach_row)&& i%number_ineach_row !=0 && i>=number_ineach_row) {
-        number_of_bomb_around++;
+        numberOfBombAround++;
 
       }
       if(bomb_location.contains(i-number_ineach_row)&& i>=number_ineach_row){
-        number_of_bomb_around++;
+        numberOfBombAround++;
 
       }
 
       if(bomb_location.contains(i+1-number_ineach_row)&& i>=number_ineach_row && (i%number_ineach_row) !=(number_ineach_row-1)){
-        number_of_bomb_around++;
+        numberOfBombAround++;
 
       }
       if(bomb_location.contains(i+1)&& (i%number_ineach_row) !=(number_ineach_row-1) ){
-        number_of_bomb_around++;
+        numberOfBombAround++;
         
       }
       
       if(bomb_location.contains(i+1+number_ineach_row)&& (i%number_ineach_row) != (number_ineach_row-1) && i<(number_of_square-number_ineach_row)){
-         number_of_bomb_around++;
+         numberOfBombAround++;
       }
 
       if(bomb_location.contains(i+number_ineach_row)&& i<(number_of_square-number_ineach_row)){
-        number_of_bomb_around++;
+        numberOfBombAround++;
       }
 
       if(bomb_location.contains(i-1+number_ineach_row)&& i<(number_of_square-number_ineach_row) && (i%number_ineach_row) != 0){
-         number_of_bomb_around++;
+         numberOfBombAround++;
       }
 
       setState(() {
-        square_status[i][0]=number_of_bomb_around;
+        square_status[i][0]=numberOfBombAround;
       });
 
 
     }
 
     
-  }
-
-  
-
-
-  
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -179,3 +220,4 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
+
