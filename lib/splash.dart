@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minesweeper/homepage.dart';
+import 'package:minesweeper/menu.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,9 +19,10 @@ class _SplashScreenState extends State<SplashScreen> {
   _goToMenuPage() {
     Future.delayed(Duration(seconds: 2)).then((_) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Homepage()));
+          context, MaterialPageRoute(builder: (context) => MenuPage()));
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
