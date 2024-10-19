@@ -12,16 +12,15 @@ class Bomb extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: function,
-      child: Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Container(
-          color: revealed ? Colors.black : Colors.grey[400],
-          child: revealed ? Center(
-              child: Image.asset(
-                "images/bomb.png",
-              ),
-            ) : Container(),
-        ),
+      child: Container(
+        margin: const EdgeInsets.all(2),
+        padding: const EdgeInsets.all(10),
+        color: revealed ? Colors.black : Colors.grey[400],
+        child: revealed ? Center(
+            child: Image.asset(
+              "images/bomb.png",
+            ),
+          ) : Container(),
       ),
     );
   }

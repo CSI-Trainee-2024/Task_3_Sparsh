@@ -178,65 +178,120 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          // mainAxisAlignment: MainAxisAlignment,
-          children: [
-            Container(
-              height: 150,
-              color: Colors.grey.shade100,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(bomb_location.length.toString() ,style: TextStyle(fontSize: 40),
-                      ),
-                      Text(" TOTAL BOMBS")
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: refresh,
-                    child: Card(
-                        color: Colors.green,
-                        child: Icon(
-                          Icons.refresh,
-                          color: Colors.white,
-                          size: 40,
-                        )),
-                  ),
-                  
-                ],
+          body: Stack(
+        children: [
+          Column(
+            children: [
+              SizedBox(
+                height: 150,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          bomb_location.length.toString(),
+                          style: TextStyle(fontSize: 40, color: Colors.white),
+                        ),
+                        Text(
+                          " TOTAL BOMBS",
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                    GestureDetector(
+                      onTap: refresh,
+                      child: Card(
+                          color: Colors.green,
+                          child: Icon(
+                            Icons.refresh,
+                            color: Colors.white,
+                            size: 40,
+                          )),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: GridView.builder(
-                  itemCount: number_of_square,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: number_ineach_row),
-                  itemBuilder: (context, index) {
-                    if (bomb_location.contains(index)) {
-                      return Bomb(
-                        revealed: bombs_revealed,
-                        function: () {
-                          setState(() {
-                            square_status[index][1] = true;
-                            bombs_revealed = true;
-                          });
-                        },
-                      );
-                    }
-                    return Numberbox(
-                        child: square_status[index][0] == 0 ? " " : square_status[index][0] ,
-                        revealed: square_status[index][1],
-                        function: () => reveal_box_numbers(index));
-                  }),
-            ),
-          ],
-        ),
-      ),
+              Expanded(
+                child: GridView.builder(
+                    itemCount: number_of_square,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: number_ineach_row),
+                    itemBuilder: (context, index) {
+                      if (bomb_location.contains(index)) {
+                        return Bomb(
+                          revealed: bombs_revealed,
+                          function: () {
+                            setState(() {
+                              square_status[index][1] = true;
+                              bombs_revealed = true;
+                            });
+                          },
+                        );
+                      }
+                      return Numberbox(
+                          text: square_status[index][0] == 0
+                              ? " "
+                              : square_status[index][0],
+                          revealed: square_status[index][1],
+                          function: () => reveal_box_numbers(index));
+                    }),
+              ),
+            ],
+          ),
+          bombs_revealed
+              ? Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.black.withOpacity(0.85),
+                )
+              : Container(),
+          bombs_revealed
+              ? Center(
+                  child: Container(
+                    padding: EdgeInsets.all(30),
+                    height: MediaQuery.of(context).size.height / 4,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[400],
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Game Over!!",
+                          style: TextStyle(fontSize: 40),
+                        ),
+                        SizedBox(height: 20),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              bomb_location.clear();
+                              square_status.clear();
+                            });
+                            generateBombLocations();
+                            generateSquareStatus();
+                            scanbombs();
+                            setState(() {
+                              bombs_revealed = false;
+                            });
+                          },
+                          child: Card(
+                              color: Colors.green,
+                              child: Icon(
+                                Icons.refresh,
+                                color: Colors.white,
+                                size: 40,
+                              )),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : Container()
+        ],
+      )),
     );
   }
 }
