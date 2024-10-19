@@ -6,24 +6,23 @@ class Bomb extends StatelessWidget {
   final bool revealed;
   final function;
 
-  const Bomb({super.key,  required this.revealed ,this.function} );  
-
+  const Bomb({super.key, required this.revealed, this.function});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: function,
       child: Padding(
-              padding: const EdgeInsets.all(1.0),
-              child: Container(
-                color: revealed?  Colors.black : Colors.grey[400],     
-            
-      
+        padding: const EdgeInsets.all(1.0),
+        child: Container(
+          color: revealed ? Colors.black : Colors.grey[400],
+          child: revealed ? Center(
+              child: Image.asset(
+                "images/bomb.png",
               ),
+            ) : Container(),
+        ),
       ),
     );
   }
 }
-  
-
-  
