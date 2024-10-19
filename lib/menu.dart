@@ -9,13 +9,14 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-  int numberOfBombs = 5;
+  int numberofGrid = 5;
   String level = "Easy";
 
 
   _changeNumberOfBombs(int bombs){
     setState(() {
-      numberOfBombs = bombs;
+      numberofGrid
+   = bombs;
     });
   }
 
@@ -48,13 +49,15 @@ class _MenuPageState extends State<MenuPage> {
                       onPressed: () => _changeNumberOfBombs(5),
                       style: ElevatedButton.styleFrom(
                           backgroundColor:
-                              numberOfBombs == 5 ? Colors.green : Colors.grey),                        
+                              numberofGrid
+                           == 5 ? Colors.green : Colors.grey),                        
                       child: const Text("5X5",style: TextStyle(color:  Colors.white))),
                   ElevatedButton(
                       onPressed: () => _changeNumberOfBombs(9),
                       style: ElevatedButton.styleFrom(
                           backgroundColor:
-                              numberOfBombs == 9 ? Colors.green : Colors.grey),
+                              numberofGrid
+                           == 9 ? Colors.green : Colors.grey),
                       child: const Text("9X9",style: TextStyle(color:  Colors.white)))
                 ],
               ),
@@ -89,8 +92,9 @@ class _MenuPageState extends State<MenuPage> {
               ),
               GestureDetector(
                 onTap: () {
+                  print(numberofGrid);
                   Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => Homepage()),
+                      MaterialPageRoute(builder: (context) => Homepage(numberofGrid,level)),
                       (Route<dynamic> route) => false);
                 },
                 child: Container(
