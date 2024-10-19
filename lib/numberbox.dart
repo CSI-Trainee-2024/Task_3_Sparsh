@@ -14,7 +14,7 @@ class Numberbox extends StatelessWidget {
       onTap: function,
       child: Container(
         margin: const EdgeInsets.all(2),
-        color: revealed?  Colors.grey[100] : Colors.grey[400],
+        color: revealed?  Colors.grey[300] : Colors.grey[500],
         child: Center(
           child: Text(
             revealed ? text.toString() :'',

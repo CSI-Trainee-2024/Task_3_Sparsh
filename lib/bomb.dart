@@ -15,7 +15,7 @@ class Bomb extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(2),
         padding: const EdgeInsets.all(10),
-        color: revealed ? Colors.black : Colors.grey[400],
+        color: revealed ? Colors.black : Colors.grey[500],
         child: revealed ? Center(
             child: Image.asset(
               "images/bomb.png",
