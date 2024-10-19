@@ -20,6 +20,7 @@ class _HomepageState extends State<Homepage> {
   final List<int> bomb_location=[
     4,40,65,5,6,10
   ];
+  bool bombs_revealed=false;
 
   @override
   void initState() {
@@ -148,10 +149,11 @@ class _HomepageState extends State<Homepage> {
                   itemBuilder: (context, index) {
                     if (bomb_location.contains(index)){
                       return Bomb(
-                        revealed: square_status[index][1],
+                        revealed: bombs_revealed,
                         function: (){
                          setState(() {
                            square_status[index][1] = true;
+                           bombs_revealed=true;
                          });
                       
                         },
