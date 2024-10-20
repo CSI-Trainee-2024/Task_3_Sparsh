@@ -1,3 +1,4 @@
+![Logo](images/title.png)
 
 # Minesweeper
 
