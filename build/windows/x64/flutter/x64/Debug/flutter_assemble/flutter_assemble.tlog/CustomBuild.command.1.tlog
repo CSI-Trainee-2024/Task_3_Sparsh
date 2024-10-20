@@ -1,0 +1,28 @@
+^D:\FLUTTERAPPS\MINESWEEPER\BUILD\WINDOWS\X64\CMAKEFILES\BDC839A48E248B8E56D9A7E29476838A\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\flutter PROJECT_DIR=D:\FlutterApps\minesweeper FLUTTER_ROOT=C:\flutter FLUTTER_EPHEMERAL_DIR=D:\FlutterApps\minesweeper\windows\flutter\ephemeral PROJECT_DIR=D:\FlutterApps\minesweeper FLUTTER_TARGET=D:\FlutterApps\minesweeper\lib\main.dart DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=D:\FlutterApps\minesweeper\.dart_tool\package_config.json C:/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\FLUTTERAPPS\MINESWEEPER\BUILD\WINDOWS\X64\CMAKEFILES\8D14396B7C671338F59D16971AC0997C\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\FLUTTERAPPS\MINESWEEPER\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/FlutterApps/minesweeper/windows -BD:/FlutterApps/minesweeper/build/windows/x64 --check-stamp-file D:/FlutterApps/minesweeper/build/windows/x64/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

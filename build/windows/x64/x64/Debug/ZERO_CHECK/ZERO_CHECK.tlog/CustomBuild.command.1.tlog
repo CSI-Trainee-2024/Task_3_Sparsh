@@ -1,0 +1,10 @@
+^D:\FLUTTERAPPS\MINESWEEPER\BUILD\WINDOWS\X64\CMAKEFILES\3B7327514D84CE6C1E3B7CEBD342B06D\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/FlutterApps/minesweeper/windows -BD:/FlutterApps/minesweeper/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/FlutterApps/minesweeper/build/windows/x64/minesweeper.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
