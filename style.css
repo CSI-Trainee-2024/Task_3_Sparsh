@@ -3,15 +3,41 @@ body{
     padding: 0;
 } 
 
-.heading{
+/* .heading{
        
       background-color: yellow;
       display: flex;
     
+} */
+
+.heading{
+        background-color: orange;
+        /* margin: 30px;
+        padding: 10px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border-radius: 20px;
+        box-shadow: 10px 10px 0px rgba(0, 0, 0, 1); */
 }
 
-.heading_1{
-    background-color: red;
-    display: grid;
-    place-items: center;
-}
+/* .background_image{
+  height: 70vh;
+  margin: 0;
+  padding: 6vh 10px 0 10vw;
+  background-image: url("../Images/Background_Home.jpg");
+  background-size: cover;
+} */
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .btn:hover {
+    background-color: RoyalBlue;
+  }
