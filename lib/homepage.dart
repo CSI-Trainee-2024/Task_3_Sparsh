@@ -127,41 +127,51 @@ class _HomepageState extends State<Homepage> {
   void scanbombs() {
     for (int i = 0; i < number_of_square; i++) {
       int numberOfBombAround = 0;
-
+      
+      //left box
       if (bomb_location.contains(i - 1) && i % number_ineach_row != 0) {
         numberOfBombAround++;
       }
+
+      //top left box
       if (bomb_location.contains(i - 1 - number_ineach_row) &&
           i % number_ineach_row != 0 &&
           i >= number_ineach_row) {
         numberOfBombAround++;
       }
+
+      //top box
       if (bomb_location.contains(i - number_ineach_row) &&
           i >= number_ineach_row) {
         numberOfBombAround++;
       }
-
+ 
+      //top right box
       if (bomb_location.contains(i + 1 - number_ineach_row) &&
           i >= number_ineach_row &&
-          (i % number_ineach_row) != (number_ineach_row - 1)) {
+          ((i + 1)% number_ineach_row) != 0) {
         numberOfBombAround++;
       }
+       
+      //right box
       if (bomb_location.contains(i + 1) &&
-          (i % number_ineach_row) != (number_ineach_row - 1)) {
+          ((i + 1) % number_ineach_row) != 0) {
         numberOfBombAround++;
       }
-
+      
+      //bottom right box
       if (bomb_location.contains(i + 1 + number_ineach_row) &&
-          (i % number_ineach_row) != (number_ineach_row - 1) &&
+          ((i + 1) % number_ineach_row) != (number_ineach_row - 1) &&
           i < (number_of_square - number_ineach_row)) {
         numberOfBombAround++;
       }
-
+      //ignoring last and first row of square 
       if (bomb_location.contains(i + number_ineach_row) &&
           i < (number_of_square - number_ineach_row)) {
         numberOfBombAround++;
       }
-
+      
+      //ignoring last  and left row of square
       if (bomb_location.contains(i - 1 + number_ineach_row) &&
           i < (number_of_square - number_ineach_row) &&
           (i % number_ineach_row) != 0) {
