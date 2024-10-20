@@ -3,41 +3,46 @@ body{
     padding: 0;
 } 
 
-/* .heading{
-       
-      background-color: yellow;
-      display: flex;
-    
-} */
-
-.heading{
-        background-color: orange;
-        /* margin: 30px;
-        padding: 10px; */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* border-radius: 20px;
-        box-shadow: 10px 10px 0px rgba(0, 0, 0, 1); */
+.bg{
+    display: flex;
 }
 
-/* .background_image{
-  height: 70vh;
-  margin: 0;
-  padding: 6vh 10px 0 10vw;
-  background-image: url("../Images/Background_Home.jpg");
-  background-size: cover;
-} */
+.home1{
+    height: 100vh;
+    width: 50vw;
+    background-color: red;
+    background-image: url("images/bg_image_1.jpg");
+    background-size:cover;
+}
 
-.btn {
-    background-color: DodgerBlue;
-    border: none;
-    color: white;
-    padding: 12px 30px;
-    cursor: pointer;
-    font-size: 20px;
-  }
+.home2{
+    height: 100vh;
+    width: 50vw;
+    background-color: red;
+    background-image: url("images/bg_image_2.jpg");
+    background-size:cover;
+}
 
-  .btn:hover {
-    background-color: RoyalBlue;
+
+@media screen and (max-width: 900px) {
+    .bg{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home1{
+        width: 100vw;
+        height: 70vh;
+        background-image: url("images/bg_image_1.jpg");
+        background-size:cover;
+    }
+
+
+    .home2{
+        width: 100vw;
+        height: 70vh;
+        background-image: url("images/bg_image_2.jpg");
+        background-size:cover;
+    }
+
   }
