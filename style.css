@@ -13,6 +13,24 @@ body{
     background-color: red;
     background-image: url("images/bg_image_1.jpg");
     background-size:cover;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo{
+    height: 20vh;
+}
+
+.spacer{
+    height: 20vh;
+}
+
+.title{
+    
+    width: 80%;
+    height: 20vh;
 }
 
 .home2{
@@ -22,6 +40,19 @@ body{
     background-image: url("images/bg_image_2.jpg");
     background-size:cover;
 }
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+} 
+
+.btn:hover {
+    background-color: RoyalBlue;
+  }
 
 
 @media screen and (max-width: 900px) {
@@ -44,5 +75,11 @@ body{
         background-image: url("images/bg_image_2.jpg");
         background-size:cover;
     }
+
+    .spacer{
+        height: 10vh;
+    }
+
+
 
   }
