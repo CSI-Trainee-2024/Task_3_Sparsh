@@ -16,11 +16,13 @@ class Bomb extends StatelessWidget {
         margin: const EdgeInsets.all(2),
         padding: const EdgeInsets.all(10),
         color: revealed ? Colors.black : Colors.grey[500],
-        child: revealed ? Center(
-            child: Image.asset(
-              "images/bomb.png",
-            ),
-          ) : Container(),
+        child: revealed
+            ? Center(
+                child: Image.asset(
+                  "images/bomb.png",
+                ),
+              )
+            : Container(),
       ),
     );
   }
