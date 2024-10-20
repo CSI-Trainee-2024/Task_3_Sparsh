@@ -10,7 +10,6 @@ body {
 .home1 {
     height: 100vh;
     width: 50vw;
-    background-color: red;
     background-image: url("images/bg_image_1.jpg");
     background-size: cover;
     justify-content: center;
@@ -36,7 +35,6 @@ body {
 .home2 {
     height: 100vh;
     width: 50vw;
-    background-color: red;
     background-image: url("images/bg_image_2.jpg");
     background-size: cover;
 }
