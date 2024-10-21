@@ -82,7 +82,7 @@ class _HomepageState extends State<Homepage> {
           square_status[index - 1][1] = true;
         }
 
-        //for right box
+        //for right boxes
         if ((index + 1) % number_ineach_row != 0) {
           if (square_status[index + 1][0] == 0 &&
               square_status[index + 1][1] == false) {
@@ -91,7 +91,7 @@ class _HomepageState extends State<Homepage> {
           square_status[index + 1][1] = true;
         }
 
-        //for upper box
+        //for top box  and check bottom boxes
         if (index >= number_ineach_row) {
           if (square_status[index - number_ineach_row][0] == 0 &&
               square_status[index - number_ineach_row][1] == false) {
@@ -100,7 +100,7 @@ class _HomepageState extends State<Homepage> {
           square_status[index - number_ineach_row][1] = true;
         }
 
-        //for lower box
+        //for bottom box  and check top boxes
         if (index <
             (number_ineach_row * number_ineach_row) - number_ineach_row) {
           if (square_status[index + number_ineach_row][0] == 0 &&
@@ -161,7 +161,7 @@ class _HomepageState extends State<Homepage> {
       
       //bottom right box
       if (bomb_location.contains(i + 1 + number_ineach_row) &&
-          ((i + 1) % number_ineach_row) != (number_ineach_row - 1) &&
+          ((i + 1) % number_ineach_row) != 0 &&
           i < (number_of_square - number_ineach_row)) {
         numberOfBombAround++;
       }
@@ -171,7 +171,7 @@ class _HomepageState extends State<Homepage> {
         numberOfBombAround++;
       }
       
-      //ignoring last  and left row of square
+      //ignoring last and left row of square
       if (bomb_location.contains(i - 1 + number_ineach_row) &&
           i < (number_of_square - number_ineach_row) &&
           (i % number_ineach_row) != 0) {
